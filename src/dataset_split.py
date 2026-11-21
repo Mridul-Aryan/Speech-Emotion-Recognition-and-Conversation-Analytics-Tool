@@ -60,3 +60,26 @@ print("\nActors in each set:")
 print("Train:", np.unique(actors[train_mask]))
 print("Validation:", np.unique(actors[val_mask]))
 print("Test:", np.unique(actors[test_mask]))
+
+
+
+'''
+Suppose Actor 1 records 60 audio files.
+
+If you randomly split the recordings:
+- 45 recordings from Actor 1 could enter training.
+- 10 recordings from Actor 1 could enter validation.
+- 5 recordings from Actor 1 could enter testing.
+The model has already heard Actor 1's voice during training.
+
+It might learn characteristics of the speaker, such as:
+- Pitch
+- Voice texture
+- Accent
+- Speaking speed
+- Vocal characteristics
+Instead of genuinely recognizing emotion, it could partly learn to recognize the speaker.
+
+This is called data leakage in this context—information related to the test samples, particularly speaker identity, 
+leaks into the training process and makes evaluation less independent.
+'''
