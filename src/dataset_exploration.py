@@ -53,6 +53,14 @@ for actor_folder in os.listdir(DATASET_PATH):
 
 df = pd.DataFrame(data)
 
+# Save dataset information for future use
+os.makedirs("outputs", exist_ok=True)
+
+df.to_csv("outputs/dataset_metadata.csv", index=False)
+
+print("Dataset metadata saved successfully!")
+
+
 print("Dataset successfully loaded!")
 print("Total selected files:", len(df))
 
@@ -79,3 +87,4 @@ plt.ylabel("Number of Audio Samples")
 
 plt.tight_layout()
 plt.show()
+
