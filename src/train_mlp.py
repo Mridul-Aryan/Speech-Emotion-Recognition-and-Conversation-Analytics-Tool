@@ -15,6 +15,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Input
 from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.regularizers import l2
 
 # --------------------------------------------------
 # 1. Paths
@@ -94,16 +95,17 @@ print("\nClass weights:", class_weights)
 # 6. Build the MLP model
 # --------------------------------------------------
 
+
 model = Sequential([
     Input(shape=(80,)),
 
-    Dense(128, activation="relu"),
+    Dense(64, activation="relu",
+          kernel_regularizer=l2(0.001)),
+    Dropout(0.4),
+
+    Dense(32, activation="relu",
+          kernel_regularizer=l2(0.001)),
     Dropout(0.3),
-
-    Dense(64, activation="relu"),
-    Dropout(0.2),
-
-    Dense(32, activation="relu"),
 
     Dense(4, activation="softmax")
 ])
