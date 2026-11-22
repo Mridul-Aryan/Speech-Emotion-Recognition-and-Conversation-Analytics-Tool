@@ -4,3 +4,5 @@ __pycache__/
 dataset/
 models/*.keras
 models/*.h5
+# Large processed datasets
+outputs/*.npz
